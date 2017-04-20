@@ -1,0 +1,16 @@
+#!/bin/bash
+origin=$(git remote -v | grep origin | grep fetch | tr ':' ' ' | awk '{print $3}' | perl -pe 's/\.git.*$//')
+body=$(curl https://github.com/$origin/pulls 2>/dev/null)
+lines=$(echo $body | tr '<' '\n' | awk '/li id="issue/,/\/li>/' | perl -pe 's/a href="/\n/g' | grep pull)
+IFS=$'\n'
+i=0
+for line in $lines; do
+  first=$(echo $line | grep pull | grep js-navigation-open | awk '{print $1}' | sed 's/"//')
+  second=$(echo $line | grep pull | grep js-navigation-open | sed 's/^.*>//')
+  if [[ -n "$first" && -n "$second" ]]; then
+    let i++
+    echo -n "$i https://github.com$first  "
+    echo $second
+  fi
+done
+unset IFS
