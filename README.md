@@ -40,4 +40,4 @@ cpr](https://github.com/abemassry/git-cpr)
 `https://github.com/smbaker/pynest/pull/9`
 
 ### In git cpr
-git cpr $(git lpr 6)
+`git cpr $(git lpr 6)`
