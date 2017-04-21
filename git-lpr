@@ -9,8 +9,14 @@ for line in $lines; do
   second=$(echo $line | grep pull | grep js-navigation-open | sed 's/^.*>//')
   if [[ -n "$first" && -n "$second" ]]; then
     let i++
-    echo -n "$i https://github.com$first  "
-    echo $second
+    if [[ $1 == $i ]]; then
+      echo "https://github.com$first"
+    else
+      if [[ -z $1 ]]; then
+        echo -n "$i https://github.com$first  "
+        echo $second
+      fi
+    fi
   fi
 done
 unset IFS

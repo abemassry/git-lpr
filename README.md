@@ -17,10 +17,10 @@
 
   `cp git-lpr ~/bin`
 
-## USAGE
-`git lpr`
+## Usage
+`git lpr` lists PRs
 
-## OUTPUT (example)
+### Output List (example)
 ```
 1 https://github.com/smbaker/pynest/pull/20   adding a etst fgiler
 2 https://github.com/smbaker/pynest/pull/19   Add &#39;mode&#39; command to turn thermostat on and off
@@ -31,3 +31,13 @@
 7 https://github.com/smbaker/pynest/pull/8   COSM integration, separation of library and script
 8 https://github.com/smbaker/pynest/pull/6   Thank you for writing this, I added the feature I was dying to have
 ```
+
+### Usage list number
+`git lpr 6` prints out the URL for 6 so you can use it in [git
+cpr](https://github.com/abemassry/git-cpr)
+
+### Output URL (example)
+`https://github.com/smbaker/pynest/pull/9`
+
+### In git cpr
+git cpr $(git lpr 6)
